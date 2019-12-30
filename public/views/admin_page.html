@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    	<!-- Bootstrap CSS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    	<style>
+    		*{
+    			margin:0;
+    			padding:0;
+    			font-family: cursive;
+    		}
+    		nav{
+    			height: 10vh;
+    			width:100%;
+    			background-color: red;
+    			color:lime;
+    			text-align: center;
+    			font-size: 60px;
+    			display: flex;
+    			justify-content: center;
+    			align-items: center;
+    			
+    		}
+    		.main-section{
+    			width:100%;
+    			height:90vh;
+    			background: url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+    			background-attachment: fixed;
+    			background-position: center;
+    			background-size: cover;
+    			background-repeat: no-repeat;
+    			display:flex;
+    			justify-content: space-around;
+    			align-items: center;
+
+    		}
+    		.click-btn{
+    			position: relative;
+    			background: none;
+    			color:white;
+    			cursor:pointer;
+    			font-size: 32px;
+    			border:none;
+    			transition: all 0.3s ease-out;
+    		}
+    		.click-btn:hover{
+    			font-size: 40px;
+    			color:orange;
+    		}
+    		.click-btn:focus{
+    			outline: none;
+    		}
+    		.click-btn::after{
+    			content:'';
+    			display: block;
+    			width:100%;
+    			height:2px;
+    			background-color:white;
+    			transition: all 0.3s ease-out;
+    		}
+    		.click-btn:hover::after{
+    			background-color: orange;
+    		}
+    		.btn1{
+    			left:-50px;
+    		}
+    		.btn2{
+    			left:50px;
+    		}
+    		.btn3{
+    			left:50px;
+    		}
+    		.stu-section{
+    			height:90vh;
+    			background:url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);;
+    			background-attachment: fixed;
+    			background-position: center;
+    			background-repeat: no-repeat;
+    			background-size: cover;
+    			display: none;
+    		}
+    		.course-section{
+    			height:90vh;
+    			background:url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);;
+    			background-attachment: fixed;
+    			background-position: center;
+    			background-repeat: no-repeat;
+    			background-size: cover;
+    			display: none;
+    		}
+    		.home{
+    			position: absolute;
+    			color:lime;
+    			font-size: 45px;
+    			top:5px;
+    			right:2%;
+    			cursor: pointer;
+    		}
+    		.login{
+	        padding:50px;
+	    
+	      }
+	      .login-header{
+	        font-size:40px;
+	        color:white;
+	        padding:4px 0px;
+	        font-weight:bold;
+	        border-bottom: 5px solid #4caf50;
+	        display:inline-block;
+	        margin-bottom:50px;
+	      }
+	      .textbox{
+	        width:100%;
+	        overflow:hidden;
+	        font-size:20px;
+	        padding:10px 0;
+	        margin:10px 0;
+	        border-bottom: 1px solid #4caf50;
+	       
+	      }
+	      .textbox i{
+	        font-size: 26px;
+	        margin-right: 3px;
+	        color:white;
+	      }
+	      .textbox input{
+	        border:none;
+	        outline:none;
+	        background:none;
+	        color:white;
+	        font-size:18px;
+	      }
+	      .login{
+	        border:5px solid #4caf50;
+	        border-top-left-radius: 50px;
+	        border-bottom-right-radius: 50px;
+	        transition-property: all;
+	        transition-duration: 500ms;
+	        transition-timing-function: ease-out;
+	      }
+	      .login:hover{
+	        border-top-right-radius: 50px;
+	        border-top-left-radius: 0px;
+	        border-bottom-left-radius: 50px;
+	        border-bottom-right-radius: 0px;
+	      }
+	      .submit{
+	        color:white;
+	        padding:5px;
+	        cursor:pointer;
+	        width:100%;
+	        margin-top:20px;
+	        background:none;
+	        border:3px solid #4caf50;
+	        font-size:18px;
+	      }
+	      .submit:focus{
+	        outline:none;
+	      }
+	      .update{
+	      	position: absolute;
+	      	width:100%;
+	      	height:100%;
+	      	top:0px;
+	      	z-index: 10;
+	      	font-size: 50px;
+	      	color:red;
+	      	display: none;
+	      	justify-content: center;
+	      	align-items: center;
+	      	flex-direction: column;
+	      }
+	      .update-div{
+	      	width:70%;
+	      	display: flex;
+	      	align-items: center;
+	      	justify-content: space-around;
+	      	margin-top: 40px;
+	      }
+	      .up-btn{
+	      	font-size: 32px;
+	      	cursor:pointer;
+	      	color:white;
+	      	padding-left: 20px;
+	      	padding-right: 20px;
+	      	background: blue;
+	      	border: 3px solid navy;
+	      	box-shadow: 3px 3px black;
+	      	border-radius: 5px;
+	      	transition: all 0.3s ease-out;
+
+	      }
+	      .up-btn:hover{
+	      	box-shadow: none;
+	      	transform: translate(10px,10px);
+	      }
+	      .up-btn:focus{
+	      	outline: none;
+	      }
+	      .blur{
+	      	filter:blur(2px);
+	      }
+	      .crossing{
+	      	position: absolute;
+	      	cursor: pointer;
+	      	font-size: 60px;
+	      	top:3px;
+	      	right: 35px;
+	      	color:red;
+	      }
+	      .check-boxes{
+	      	width:100%;
+	      	display: flex;
+	      	align-items: center;
+	      	justify-content: space-between;
+	      	color:grey;
+	      }
+	      .check{
+	      	cursor: pointer;
+	      	margin-right: 5px;
+	      	margin-top: 10px;
+	      	font-size: 20px;
+	      }
+    	</style>
+    </head>
+    <body>
+    	<span class="home"><i class="fas fa-home"></i></span>
+    	<nav>
+    		Welcome Admin
+    	</nav>
+    	<section class="main-section">
+    		<button type="submit" class="click-btn btn1">Add Student</button>
+    		<button type="submit" class="click-btn btn2">Add Course</button>
+    		<button type="submit" class="click-btn btn3">Update Semester</button>
+    	</section>
+    	<section class="stu-section">
+    		<div class="container-fluid d-flex justify-content-center align-items-center" id="stu-form">
+		      <div class="login">
+		        <h1 class="login-header" style="color:orange;">STUDENT</h1>
+		        <form action="addstudent" method="POST">
+		        <div class="textbox">
+		          <i class="fas fa-user"></i>
+		          <input type="text" value="" placeholder="Name" name="stname" onclick="changeIcon(this)"/>
+		        </div>
+		        <div class="textbox">
+		          <i class="fas fa-lock"></i>
+		          <input type="number" value="" placeholder="Roll No." name="strollno" onclick="changeIcon(this)"/>
+		        </div>
+		         <div class="textbox">
+		          <i class="fas fa-building"></i>
+		          <input type="text" value="" placeholder="Department" name="stdepartment" onclick="changeIcon(this)"/>
+		        </div>
+		         <div class="textbox">
+		          <i class="fas fa-users"></i>
+		          <input type="number" value="" placeholder="Section" name="stsection" onclick="changeIcon(this)"/>
+		        </div>
+		        <input type="submit" value="Register Student" class="submit" name="action" />
+		      </form>
+		      </div>
+		   </div>
+    	</section>
+    	<section class="course-section">
+    		<div class="container-fluid d-flex justify-content-center align-items-center" id="course-form">
+		      <div class="login">
+		        <h1 class="login-header" style="color:orange;">Course</h1>
+		        <form action="addcourse" method="POST">
+		        <div class="textbox">
+		          <i class="fas fa-user"></i>
+		          <input type="text" value="" placeholder="Course Name" name="cname" onclick="changeIcon(this)"/>
+		        </div>
+		        <div class="textbox">
+		          <i class="fas fa-lock"></i>
+		          <input type="text" value="" placeholder="Course Code" name="ccode" onclick="changeIcon(this)"/>
+		        </div>
+		         <div class="textbox">
+		          <i class="fas fa-building"></i>
+		          <input type="text" value="" placeholder="Department" name="cdepartment" onclick="changeIcon(this)"/>
+		        </div>
+		         <div class="textbox">
+		          <i class="fas fa-users"></i>
+		          <input type="text" value="" placeholder="Semester" name="csemester" onclick="changeIcon(this)"/>
+		        </div>
+		        <div class="check-boxes">
+		        	<span><input type="checkbox" class="check check1" name="ctype" value="1"  />Lec</span>
+		        	<span><input type="checkbox" class="check check2" name="ctype" value="2" />Lab</span>
+		        	<span><input type="checkbox" class="check check3" name="ctype" value="3" />Tut</span>
+				</div>
+				<div class="check-boxes">
+					Open Elective:
+		        	<span><input type="checkbox" class="check check4" name="copen" value="1"  />Yes</span>
+		        	<span><input type="checkbox" class="check check5" name="copen" value="2" />No</span>
+		        </div>
+		        <input type="submit" value="Register Course" class="submit" name="action" />
+		      </form>
+		      </div>
+		   </div>
+    	</section>
+
+    	<div class="update">
+    		Do you really want to update the semester?
+    		<div class="update-div">
+    			<button class="up-btn cancel">Cancel</button>
+    			<form action="updatesem">
+    				<button type="submit" class="up-btn confirm" name="action">Confirm</button>
+    			</form>
+    		</div>
+    		<span class="crossing"><i class="fas fa-times"></i></span>
+    	</div>
+
+
+
+
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	    <script type="text/javascript">
+	    	const nav=document.querySelector("nav");
+	    	const home=document.querySelector(".home");
+	    	const stuBtn=document.querySelector(".btn1");
+	    	const courseBtn=document.querySelector(".btn2");
+	    	const updateBtn=document.querySelector(".btn3");
+	    	const mainPage=document.querySelector(".main-section");
+	    	const stuPage=document.querySelector(".stu-section");
+	    	const coursePage=document.querySelector(".course-section");
+	    	const updatePage=document.querySelector(".update");
+	    	const cancelBtn=document.querySelector(".cancel");
+	    	const confirmBtn=document.querySelector(".confirm");
+	    	const crossing=document.querySelector(".crossing");
+	    	const check1=document.querySelector(".check1");
+	    	const check2=document.querySelector(".check2");
+	    	const check3=document.querySelector(".check3");
+
+	    	 function iconColor1(btn){
+	          const icon=btn.previousElementSibling;
+	          icon.style.color="#4caf50";
+	        }
+	        function iconColor2(btn){
+	          const icon=btn.previousElementSibling;
+	          icon.style.color="white";
+	        }
+	        function changeIcon(field){
+	          const icon=field.previousElementSibling;
+	          icon.style.color="#4caf50";
+	          field.placeholder="";
+	        }
+
+	    	home.addEventListener('click',()=>{
+	    		stuPage.style.display="none";
+	    		coursePage.style.display="none";
+	    		mainPage.style.display="flex";
+	    		nav.innerHTML="Welcome Admin";
+	    	})
+
+
+	    	stuBtn.addEventListener('click',()=>{
+	    		mainPage.style.display="none";
+	    		stuPage.style.display="flex";
+	    		nav.innerHTML="";
+	    	});
+
+	    	courseBtn.addEventListener('click',()=>{
+	    		mainPage.style.display="none";
+	    		coursePage.style.display="flex";
+	    		check1.checked=false;
+	    		check2.checked=false;
+	    		check3.checked=false;
+	    		nav.innerHTML="";
+	    	});
+
+	    	updateBtn.addEventListener('click',()=>{
+	    		mainPage.style.opacity="0.1";
+	    		nav.style.opacity="0.1";
+	    		home.style.opacity="0.1";
+	    		updatePage.style.display="flex";
+	    		mainPage.classList.add("blur");
+	    		nav.classList.add("blur");
+	    		home.classList.add("blur");
+	    	});
+
+	    	cancelBtn.addEventListener('click',()=>{
+	    		mainPage.style.opacity="1.0";
+	    		nav.style.opacity="1.0";
+	    		home.style.opacity="1.0";
+	    		updatePage.style.display="none";
+	    		mainPage.classList.remove("blur");
+	    		nav.classList.remove("blur");
+	    		home.classList.remove("blur");
+	    	});
+
+	    	crossing.addEventListener('click',()=>{
+	    		mainPage.style.opacity="1.0";
+	    		nav.style.opacity="1.0";
+	    		home.style.opacity="1.0";
+	    		updatePage.style.display="none";
+	    		mainPage.classList.remove("blur");
+	    		nav.classList.remove("blur");
+	    		home.classList.remove("blur");
+	    	});
+	    </script>
+	</body>
+</html>

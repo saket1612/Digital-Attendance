@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            body{
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+                background: url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+                background-attachment: fixed;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: all 0.5s ease-out;
+                font-family: cursive;
+                min-height: 100vh;
+            }
+            .rem,.sec1,.sec2{
+                min-height: 90vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .sec1,.sec2{
+                display:none;       
+            }
+            nav{
+                background-color: red;
+                height:10vh;
+                position: relative;
+                border-bottom: 10px ridge purple;
+                box-shadow: 0 3px black;
+            }
+            .nav-links{
+                list-style: none;
+                display: flex;
+                width:100%;
+                height:100vh;
+                align-items: center;
+                justify-content: center;
+                margin-left: auto;
+                position: fixed;
+                background-color:blue;
+                flex-direction:row;
+                clip-path: circle(100px at 90% -20%);
+                -webkit-clip-path:circle(100px at 90% -20%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+                
+            }
+            .nav-links.open{
+                clip-path:circle(1200px at 90% -20%);
+                -webkit-clip-path:circle(1200px at 90% -20%);
+                pointer-events: all;
+                
+            }
+            /*@media screen and (min-width:768px;){
+                .nav-links.open{
+                    clip-path:circle(1200px at 90% -20%);
+                    -webkit-clip-path:circle(1200px at 90% -20%);
+                }
+            }*/
+            .nav-links li a{
+                color:white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .nav-links li{
+                opacity:0;
+                margin: 0;
+                padding: 0;
+            }
+            .nav-links li a{
+                font-size: 25px;
+                padding: 0;
+                margin: 0;
+            }
+            .nav-links li:nth-child(1){
+                transition: all 0.5s ease 0.2s;
+            }
+            .nav-links li:nth-child(2){
+                transition: all 0.5s ease 0.4s;
+            }
+            .nav-links li:nth-child(3){
+                transition: all 0.5s ease 0.6s;
+            }
+            .line{
+                width:30px;
+                height:3px;
+                background-color: white;
+                margin:5px;
+            }
+            .hamburger{
+                position: absolute;
+                cursor: pointer;
+                right:2%;
+                top:50%;
+                transform: translate(-2%,-50%);
+                z-index: 2;
+            }
+            .thumbnail1{
+                color:white;
+                font-size:35px;
+                position: absolute;
+                top:50%;
+                left:2%;
+                transform:translate(-2%,-50%);
+                z-index: 2;
+                cursor: pointer;
+                transition: all 0.5s ease-out;
+            }
+            .profile-links{
+                list-style: none;
+                display:flex;
+                width:100%;
+                height:100vh;
+                flex-direction:column;
+                justify-content: space-around;
+                align-items: center;
+                position: fixed;
+                background:#FFC53A;
+                clip-path: circle(100px at 10% -20%);
+                -webkit-clip-path:circle(100px at 10% -20%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+            }
+            .profile-links.opener{
+                clip-path: circle(1200px at 10% -20%);
+                -webkit-clip-path:circle(1200px at 10% -20%);
+                pointer-events: all;
+            }
+            .profile-links li{
+                color:white;
+                font-size: 25px;
+            }
+            .profile-links li{
+                opacity:0;
+            }
+            .profile-links li:nth-child(1){
+                transition:all 0.5s ease 0.2s;
+            }
+            .profile-links li:nth-child(2){
+                transition: all 0.5s ease 0.5s;
+            }
+            .profile-links li:nth-child(3){
+                transition: all 0.5s ease 0.8s;
+            }
+            li.fade{
+                opacity:1;
+            }
+            .logout{
+                border-radius: 5px;
+                border:3px solid blue;
+                box-shadow: 2px 2px black;
+            }
+            .logout:focus{
+                outline:none;
+            }
+            .logout:hover{
+                box-shadow: none;
+                background-color: cyan;
+            }
+            .line{
+                transition: all 0.5s ease;
+                opacity: 1.0;
+            }
+            .bar1-toggle{
+                transform: rotate(45deg) translate(11px,11px);
+            }
+            .bar2-toggle{
+                opacity:0.0;
+            }
+            .bar3-toggle{
+                transform: rotate(-45deg);
+            }
+            .courses{
+                min-height: 60vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .nav-links li a:hover{
+                color:orange;
+            }
+            .welcome,.track{
+                display:block;
+                position: absolute;
+                color:lime;
+                text-align: center;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: backwards;
+                animation-direction: alternate;
+                z-index: -2;
+            } 
+            .welcome{
+                top:200px;
+                animation-name: welcomin;
+            }
+            .track{
+                top:500px;
+                animation-name:trackin;
+            }
+            @keyframes tracking{
+                0%{
+                    top:45%;
+                }
+                50%{
+                    top:85%;
+                }
+                100%{
+                    top:10%;
+                }
+            }
+            @keyframes welcoming{
+                0%{
+                    top:10%;
+                }
+                50%{
+                    top:45%;
+                }
+                100%{
+                    top:85%;
+                }
+            }
+            @media screen and (max-width:576px)
+            {
+                .courses{
+                    margin-left: 40px;
+                    margin-right: 80px;
+                }
+                .nav-links li:hover{
+                    position: relative;
+                    transform:translate(15px);
+                }
+                .nav-links li a{
+                    font-size: 24px;
+                }
+                .welcome,.track{
+                    font-size: 28px;
+                }
+            }
+            @media screen and (min-width:576px)
+            {
+                .courses{
+                    margin-left: 90px;
+                    margin-right: 90px;
+                }
+                .nav-links li:hover{
+                    position: relative;
+                    transform: translate(15px);
+ 
+                }
+                .nav-links li a{
+                    font-size: 26px;
+                }
+                .welcome,.track{
+                    font-size: 40px;
+                }
+            }
+            @media screen and (min-width:768px)
+            {
+                .courses{
+                    margin-left: 130px;
+                    margin-right: 130px;
+                }
+                .nav-links li:hover{
+                    position: relative;
+                    transform: translate(20px);
+ 
+                }
+                .nav-links li a{
+                    font-size: 28px;
+                }
+                .welcome,.track{
+                    font-size: 50px;
+                }
+            }
+            @media screen and (min-width:992px)
+            {
+                .courses{
+                    margin-left: 170px;
+                    margin-right: 170px;
+                }
+                .nav-links li:hover{
+                    position: relative;
+                    transform:translate(20px);
+ 
+                }
+                .nav-links li a{
+                    font-size: 30px;
+                }
+                .welcome,.track{
+                    font-size: 65px;
+                }
+            }
+            @media screen and (min-width:1200px)
+            {
+                .courses{
+                    margin-left: 200px;
+                    margin-right: 0px;
+                    font-size: 40px;
+                }
+                .nav-links li:hover{
+                position: relative;
+                transform:translate(30px);
+                }
+                .nav-links li a{
+                    font-size: 28px;
+                }
+                .welcome,.track{
+                    font-size: 70px;
+                }
+            }
+            .cool-links::after{
+                content:'';
+                display: block;
+                width:0;
+                height:2px;
+                background-color: #fff;
+                transition: width .3s;
+            }
+            .cool-links:hover::after{
+                width:100%;
+                transition: width .3s;
+            }
+            .subject,.subject1,.subject2{
+                width:350px;
+                height:350px;
+                background:none;
+                border: 10px ridge seagreen;
+                border-top-left-radius: 10%;
+                border-bottom-right-radius: 10%;
+                border-top-right-radius: 10%;
+                color:white;
+                list-style: none;
+                transition: all 1s ease-out;
+                box-shadow: 3px 3px 3px grey;
+            }
+            .subject:hover,.subject1:hover,.subject2:hover
+            {
+                border-top-left-radius: 10%;
+                border-bottom-right-radius: 10%;
+                border-bottom-left-radius: 10%;
+                border-top-right-radius:0%;
+            }
+            .subject{
+                display:none;
+            }
+            .subject .title,.subject1 .title1,.subject2 .title2{
+                font-size: 18px;
+                color:seagreen;
+            }
+            .subject li,.subject1 li,.subject2 li{
+                margin-top: 25px;
+            }
+            .subject .result,.subject1 .result1,.subject2 .result2{
+                font-size: 15px;
+            }
+
+            @media screen and (min-width:768px)
+            {
+                .subject,.subject1,.subject2{
+                    width:400px;
+                    height:400px;
+                }
+                .subject .title,.subject1 .title1,.subject2 .title2{
+                    font-size:20px;
+                }
+                .subject li,.subject1 li,.subject2 li{
+                    margin-top: 30px;
+                }
+                .subject .result,.subject1 .result1,.subject2 .result2{
+                    font-size: 17px;
+                }
+            }
+            @media screen and (min-width:992px)
+            {
+                .subject,.subject1,.subject2{
+                    width:450px;
+                    height:450px;
+                }
+                .subject .title,.subject1 .title1,.subject2 .title2{
+                    font-size: 22px;
+                }
+                .subject li,.subject1 li,.subject2 li{
+                    margin-top: 35px;
+                }
+                .subject .result,.subject1 .result1,.subject2 .result2{
+                    font-size: 19px;
+                }
+            }
+            @media screen and (min-width:1200px)
+            {
+                .subject,.subject1,.subject2{
+                    width:500px;
+                    height:500px;
+                }
+                .subject .title,.subject1 .title1,.subject2 .title2{
+                    font-size: 26px;
+                }
+                .subject li,.subject1 li,.subject2 li{
+                    margin-top: 40px;
+                }
+                .subject .result,.subject1 .result1,.subject2 .result2{
+                    font-size: 23px;
+                }
+            }
+            .attendance,.attendance1,.attendance2{
+                display: flex;
+                align-items: center;
+            }
+            .progress,.progress1,.progress2{
+                display: block;
+                width:90%;
+                height:4vh;
+                background:none;
+                border:2px solid navy;
+                position:relative;
+                top:15%;
+                z-index: -1;
+                box-shadow: 1px 1px 5px;
+            }
+            .filler,.filler1,.filler2{
+                float:left;
+                width:1%;
+                height:100%;
+                background-color: red;
+                transition-timing-function: ease-in-out;
+                color:navy;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            .home{
+                position: absolute;
+                color:white;
+                font-size: 35px;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+                z-index: 10;
+                cursor: pointer;
+                display:block;
+                transition: all 1s ease-out;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <nav>
+            <i class="fas fa-user-graduate thumbnail1"></i>
+            <div class="hamburger">
+                <div class="line" id="bar1"></div>
+                <div class="line" id="bar2"></div>
+                <div class="line" id="bar3"></div>
+            </div>
+            <ul class="nav-links">
+            
+            <%var course_array =[]%>
+            <%var course_names=courses_names.split(':')%>
+            <%var teacher_names=ct_names.split(':')%>
+            <%var total_classes=c_att.split(':')%>
+
+            <%var labteacher_names=lt_names.split(':')%>
+            <%var total_labs=l_att.split(':')%>
+
+            <%var tutteacher_names=tt_names.split(':')%>
+            <%var total_tuts=t_att.split(':')%>
+
+            <%var open_elective=open_data%>
+            <% data.forEach((elem, index) => { %>
+                <%course_array=elem%>
+            <% }) %>
+            
+                <div class="courses">
+                    <li data-id="0" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[0] %></a></li>
+                    <li data-id="1" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[1] %></a></li>
+                    <li data-id="2" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[2] %></a></li>
+                </div>
+                <div class="courses">
+                    <li data-id="3" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[3] %></a></li>
+                    <li data-id="4" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[4] %></a></li>
+                    <li data-id="5" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[5] %></a></li>
+                    <li data-id="5" style="text-align: center;"><a href="#" class="cool-links"><%=openc %></a></li>
+                </div>
+                <div class="courses">
+                    <li data-id="6" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[6] %></a></li>
+                    <li data-id="7" style="text-align: center;"><a href="#" class="cool-links"><%=course_names[7] %></a></li>
+                </div>
+            </ul>
+            <span class="home">
+                <i class="fas fa-home"></i>
+            </span>
+            <ul class="profile-links">
+                <li style="margin-top: 30px;"><span class="under" >Name :  </span><span><%=course_array.name%></span></li>
+                <li><span class="under">Roll No. :  </span><span><%=course_array.rollno%></span></li>
+                <li><form action="registercourses" method="GET"><button type="submit" style="cursor:pointer;" class="logout">Choose Courses</button></form></li>
+                <li><form action="uploadimage" method="get"><button type="submit" style="cursor:pointer;" class="logout">Upload Image</button></form></li>
+                <li><form action="/logout"><button type="submit" style="cursor:pointer" class="logout">Log Out</button></form></li>
+            </ul>
+        </nav>
+        <section class="rem" onclick="change()">
+            <h1 class="welcome">
+                Welcome To Student Portal
+            </h1>
+            <h1 class="track">
+                Keep Track of Your Attendance
+            </h1>
+            <ul class="subject">
+                <li>
+                    <h1 class="title">COURSE</h1>
+                    <h1 class="result" id="course_"></h1>
+                </li>
+                <li>
+                    <h1 class="title">TEACHER</h1>
+                    <h1 class="result" id="teacher_"></h1>
+                </li>
+                <div class="attendance">
+                    <li>
+                        <h1 class="title">ATTENDED</h1>
+                        <h1 class="result" id="myatt"></h1>
+                    </li>
+                    <li class="mx-auto">
+                        <h1 class="title">TOTAL</h1>
+                        <h1 class="result" id="totalatt"></h1>
+                    </li>
+                </div>
+                <span class="progress">
+                    <span class="filler">
+                    </span>
+                </span>
+            </ul>
+        </section>
+
+        <section class="sec1">
+            <ul class="subject1">
+                <li>
+                    <h1 class="title1">COURSE</h1>
+                    <h1 class="result1" id="course_1"></h1>
+                </li>
+                <li>
+                    <h1 class="title1">TEACHER</h1>
+                    <h1 class="result1" id="teacher_1"></h1>
+                </li>
+                <div class="attendance1">
+                    <li>
+                        <h1 class="title1">ATTENDED</h1>
+                        <h1 class="result1" id="myatt1"></h1>
+                    </li>
+                    <li class="mx-auto">
+                        <h1 class="title1">TOTAL</h1>
+                        <h1 class="result1" id="totalatt1"></h1>
+                    </li>
+                </div>
+                <span class="progress1">
+                    <span class="filler1">
+                    </span>
+                </span>
+            </ul>
+        </section>
+
+        <section class="sec2">
+            <ul class="subject2">
+                <li>
+                    <h1 class="title2">COURSE</h1>
+                    <h1 class="result2" id="course_2"></h1>
+                </li>
+                <li>
+                    <h1 class="title2">TEACHER</h1>
+                    <h1 class="result2" id="teacher_2"></h1>
+                </li>
+                <div class="attendance2">
+                    <li>
+                        <h1 class="title2">ATTENDED</h1>
+                        <h1 class="result2" id="myatt2"></h1>
+                    </li>
+                    <li class="mx-auto">
+                        <h1 class="title2">TOTAL</h1>
+                        <h1 class="result2" id="totalatt2"></h1>
+                    </li>
+                </div>
+                <span class="progress2">
+                    <span class="filler2">
+                    </span>
+                </span>
+            </ul>
+        </section>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            //////////////////////
+            /////////
+            /////////////////
+            /////////////////////
+            ////////////////////
+
+
+            const nav=document.querySelector("nav");
+            const hamburger=document.querySelector(".hamburger");
+            const navlinks=document.querySelector(".nav-links");
+            const links=document.querySelectorAll(".nav-links li");
+            const profileIcon=document.querySelector("nav .thumbnail1");
+            const profilelinks=document.querySelector(".profile-links");
+            const plinks=document.querySelectorAll(".profile-links li");
+            const filler=document.querySelector(".filler");
+            const att=document.querySelector(".subject");
+            att.style.display="none";
+            const myatt=document.querySelector("#myatt");
+            const totalatt=document.querySelector("#totalatt");
+            const welcome=document.querySelector(".welcome");
+            const track=document.querySelector(".track");
+            const home=document.querySelector(".home");
+            const bar1=document.querySelector("#bar1");
+            const bar2=document.querySelector("#bar2");
+            const bar3=document.querySelector("#bar3");
+            const course_=document.querySelector("#course_");
+            const teacher_=document.querySelector("#teacher_");
+
+
+            const sec_lab=document.querySelector(".sec1");
+            const course_lab=document.querySelector("#course_1");
+            const teacher_lab=document.querySelector("#teacher_1");
+            const myatt_lab=document.querySelector("#myatt1");
+            const totalatt_lab=document.querySelector("#totalatt1");
+            const filler_lab=document.querySelector(".filler1");
+
+
+
+            const sec_tut=document.querySelector(".sec2");
+            const course_tut=document.querySelector("#course_2");
+            const teacher_tut=document.querySelector("#teacher_2");
+            const myatt_tut=document.querySelector("#myatt2");
+            const totalatt_tut=document.querySelector("#totalatt2");
+            const filler_tut=document.querySelector(".filler2");
+
+            //////////////////////
+            /////////
+            /////////////////
+            /////////////////////
+            ////////////////////
+
+
+            home.addEventListener('click',()=>{
+                welcome.style.display="block";
+                track.style.display="block";
+                att.style.display="none";
+                sec_lab.style.display="none";
+                sec_tut.style.display="none";
+                if(profilelinks.classList.contains("opener")){
+                    profilelinks.classList.toggle("opener");
+                    plinks.forEach(link=>{
+                        link.classList.toggle("fade");
+                    });
+                    home.style.color="white";
+                    profileIcon.style.color="white";
+                    hamburger.style.display="block";
+                }
+            });
+
+
+            hamburger.addEventListener('click',()=>{
+                if(!profilelinks.classList.contains("opener"))
+                {
+                    navlinks.classList.toggle("open");
+                    links.forEach(link=>{
+                        link.classList.toggle("fade");
+                    });
+                    bar1.classList.toggle("bar1-toggle");
+                    bar2.classList.toggle("bar2-toggle");
+                    bar3.classList.toggle("bar3-toggle");
+                    if(navlinks.classList.contains("open"))
+                    {
+                        home.style.display="none";
+                        profileIcon.style.display="none";
+                    }
+                    else{
+                        home.style.display="block";
+                        profileIcon.style.display="block";
+                    }
+                }
+            });
+
+
+            //////////////////////
+            /////////
+            /////////////////
+            /////////////////////
+            ////////////////////
+
+
+            profileIcon.addEventListener('click',()=>{
+                if(!navlinks.classList.contains("open"))
+                {
+                    profilelinks.classList.toggle("opener");
+                    plinks.forEach(link=>{
+                        link.classList.toggle("fade");
+                    });
+                    if(profilelinks.classList.contains("opener"))
+                    {
+                        profileIcon.style.color="purple";
+                        home.style.color="purple";
+                        hamburger.style.display="none";
+                    }
+                    else{
+                        profileIcon.style.color="white";
+                        home.style.color="white";
+                        hamburger.style.display="block";
+                    }
+                }
+            });
+
+            //////////////////////
+            /////////
+            /////////////////
+            /////////////////////
+            ////////////////////
+
+
+            function change(){
+                if(profilelinks.classList.contains("opener"))
+                {
+                    profilelinks.classList.toggle("opener");
+                    plinks.forEach(link=>{
+                        link.classList.toggle("fade");
+                    });
+                    profileIcon.style.color="white";
+                    home.style.color="white";
+                    hamburger.style.display="block";
+                }
+            }
+            ///////////////////////
+            /////////
+            /////////////////
+            /////////////////////
+            /////////////////////
+            if(<%=open_elective.length%>==3)
+            {
+                var courses=["<%=course_names[0] %>","<%=course_names[1] %>","<%=course_names[2] %>","<%=course_names[3] %>",
+                    "<%=course_names[4] %>","<%=course_names[5] %>","<%=course_names[6] %>","<%=course_names[7] %>"];
+
+                var teachers=["<%=teacher_names[0] %>","<%=teacher_names[1] %>","<%=teacher_names[2] %>","<%=teacher_names[3] %>",
+                    "<%=teacher_names[4] %>","<%=teacher_names[5] %>","<%=teacher_names[6] %>","<%=teacher_names[7] %>"];
+
+                var attLec=["<%=course_array.course1.split(':')[1]%>","<%=course_array.course2.split(':')[1]%>","<%=course_array.course3.split(':')[1]%>","<%=course_array.course4.split(':')[1]%>","<%=course_array.course5.split(':')[1]%>","<%=course_array.course6.split(':')[1]%>","<%=course_array.course7.split(':')[1]%>","<%=course_array.course8.split(':')[1]%>"];
+
+                var totLec=[<%=total_classes[0]%>,<%=total_classes[1]%>,<%=total_classes[2]%>,<%=total_classes[3]%>,
+                <%=total_classes[4]%>,<%=total_classes[5]%>,<%=total_classes[6]%>,<%=total_classes[7]%>];
+
+            }
+            if(<%=open_elective.length%>==1)
+            {
+                var courses=["<%=course_names[0] %>","<%=course_names[1] %>","<%=course_names[2] %>","<%=course_names[3] %>",
+                    "<%=course_names[4] %>","<%=openc %>"];
+
+                var teachers=["<%=teacher_names[0] %>","<%=teacher_names[1] %>","<%=teacher_names[2] %>","<%=teacher_names[3] %>",
+                    "<%=teacher_names[4] %>","<%=open_elective[0].teacher_name%>"];
+
+                var attLec=["<%=course_array.course1.split(':')[1]%>","<%=course_array.course2.split(':')[1]%>","<%=course_array.course3.split(':')[1]%>","<%=course_array.course4.split(':')[1]%>","<%=course_array.course5.split(':')[1]%>","<%=course_array.openele.split(':')[1]%>"];
+
+                var totLec=[<%=total_classes[0]%>,<%=total_classes[1]%>,<%=total_classes[2]%>,<%=total_classes[3]%>,
+                <%=total_classes[4]%>,<%=open_elective[0].tot_class%>];
+            }
+
+            ///////////////////
+            ////////////////
+            //////////////////
+            /////////////////
+            ///////////////////
+            ///////////////////////
+
+            if(<%=open_elective.length%>==3)
+            {
+                var coursesLab=["<%=course_names[0] %>","<%=course_names[1] %>","<%=course_names[2] %>","<%=course_names[3] %>","<%=course_names[4] %>","<%=course_names[5] %>","<%=course_names[6] %>","<%=course_names[7] %>"];
+
+                var teachersLab=["<%=labteacher_names[0] %>","<%=labteacher_names[1] %>","<%=labteacher_names[2] %>","<%=labteacher_names[3] %>",
+                    "<%=labteacher_names[4] %>","<%=labteacher_names[5] %>","<%=labteacher_names[6] %>","<%=labteacher_names[7] %>"];
+
+                var attLab=["<%=course_array.course1.split(':')[2]%>","<%=course_array.course2.split(':')[2]%>","<%=course_array.course3.split(':')[2]%>","<%=course_array.course4.split(':')[2]%>","<%=course_array.course5.split(':')[2]%>","<%=course_array.course6.split(':')[2]%>","<%=course_array.course7.split(':')[2]%>","<%=course_array.course8.split(':')[2]%>"];
+                var totLab=[<%=total_labs[0]%>,<%=total_labs[1]%>,<%=total_labs[2]%>,<%=total_labs[3]%>,
+                <%=total_labs[4]%>,<%=total_labs[5]%>,<%=total_labs[6]%>,<%=total_labs[7]%>];
+
+            }
+            if(<%=open_elective.length%>==1)
+            {
+
+                var coursesLab=["<%=course_names[0] %>","<%=course_names[1] %>","<%=course_names[2] %>","<%=course_names[3] %>","<%=course_names[4] %>","<%=openc %>"];
+
+                var teachersLab=["<%=labteacher_names[0] %>","<%=labteacher_names[1] %>","<%=labteacher_names[2] %>","<%=labteacher_names[3] %>",
+                    "<%=labteacher_names[4] %>","<%=open_elective[0].teacher_name%>"];
+
+                var attLab=["<%=course_array.course1.split(':')[2]%>","<%=course_array.course2.split(':')[2]%>","<%=course_array.course3.split(':')[2]%>","<%=course_array.course4.split(':')[2]%>","<%=course_array.course5.split(':')[2]%>","<%=course_array.openele.split(':')[2]%>"];
+                var totLab=[<%=total_labs[0]%>,<%=total_labs[1]%>,<%=total_labs[2]%>,<%=total_labs[3]%>,
+                <%=total_labs[4]%>,<%=open_elective[0].tot_labs%>];
+            }
+
+
+            ///////////////////
+            ////////////////
+            //////////////////
+            /////////////////
+            ///////////////////
+            ///////////////////////
+
+            if(<%=open_elective.length%>==3)
+            {
+                var coursesTut=["<%=course_names[0] %>","<%=course_names[1] %>","<%=course_names[2] %>","<%=course_names[3] %>","<%=course_names[4] %>","<%=course_names[5] %>","<%=course_names[6] %>","<%=course_names[7] %>"];
+
+                var teachersTut=["<%=tutteacher_names[0] %>","<%=tutteacher_names[1] %>","<%=tutteacher_names[2] %>","<%=tutteacher_names[3] %>",
+                    "<%=tutteacher_names[4] %>","<%=tutteacher_names[5] %>","<%=tutteacher_names[6] %>","<%=tutteacher_names[7] %>"];
+
+                var attTut=["<%=course_array.course1.split(':')[3]%>","<%=course_array.course2.split(':')[3]%>","<%=course_array.course3.split(':')[3]%>","<%=course_array.course4.split(':')[3]%>","<%=course_array.course5.split(':')[3]%>","<%=course_array.course6.split(':')[3]%>","<%=course_array.course7.split(':')[3]%>","<%=course_array.course8.split(':')[3]%>"];
+
+                var totTut=[<%=total_tuts[0]%>,<%=total_tuts[1]%>,<%=total_tuts[2]%>,<%=total_tuts[3]%>,
+                    <%=total_tuts[4]%>,<%=total_tuts[5]%>,<%=total_tuts[6]%>,<%=total_tuts[7]%>];
+            }
+            if(<%=open_elective.length%>==1)
+            {
+
+                var coursesTut=["<%=course_names[0] %>","<%=course_names[1] %>","<%=course_names[2] %>","<%=course_names[3] %>","<%=course_names[4] %>","<%=openc %>"];
+                var teachersTut=["<%=tutteacher_names[0] %>","<%=tutteacher_names[1] %>","<%=tutteacher_names[2] %>","<%=tutteacher_names[3] %>",
+                    "<%=tutteacher_names[4] %>","<%=open_elective[0].teacher_name%>"];
+
+                var attTut=["<%=course_array.course1.split(':')[3]%>","<%=course_array.course2.split(':')[3]%>","<%=course_array.course3.split(':')[3]%>","<%=course_array.course4.split(':')[3]%>","<%=course_array.course5.split(':')[3]%>","<%=course_array.openele.split(':')[3]%>"];
+
+
+                var attLab=["<%=course_array.course1.split(':')[2]%>","<%=course_array.course2.split(':')[2]%>","<%=course_array.course3.split(':')[2]%>","<%=course_array.course4.split(':')[2]%>","<%=course_array.course5.split(':')[2]%>","<%=course_array.openele.split(':')[2]%>"];
+
+                var totTut=[<%=total_tuts[0]%>,<%=total_tuts[1]%>,<%=total_tuts[2]%>,<%=total_tuts[3]%>,
+                    <%=total_tuts[4]%>,<%=open_elective[0].tot_tuts%>];
+            }
+
+            ///////////////////
+            ////////////////
+            //////////////////
+            /////////////////
+            ///////////////////
+            ///////////////////////
+
+            links.forEach(link=>{
+                link.addEventListener('click',()=>{
+                    welcome.style.display="none";
+                    track.style.display="none";
+                    profileIcon.style.display="block";
+                    
+                    
+                    home.style.display="block";
+                    navlinks.classList.toggle("open");
+                    links.forEach(link=>{
+                        link.classList.toggle("fade");
+                    });
+                    bar1.classList.toggle("bar1-toggle");
+                    bar2.classList.toggle("bar2-toggle");
+                    bar3.classList.toggle("bar3-toggle");
+                    att.style.display="block";
+                    let linkId=parseInt(link.getAttribute("data-id"));
+                    course_.innerHTML=courses[linkId]+" (Lec.)";
+                    teacher_.innerHTML=teachers[linkId];
+                    myatt.innerHTML=attLec[linkId];
+                    totalatt.innerHTML=totLec[linkId];
+                    filler.style.backgroundColor="red";
+
+
+                    if(attLab[linkId]!=-1)
+                    {
+                        sec_lab.style.display="flex";
+                        course_lab.innerHTML=coursesLab[linkId]+" (Lab.)";
+                        teacher_lab.innerHTML=teachersLab[linkId];
+                        myatt_lab.innerHTML=attLab[linkId];
+                        totalatt_lab.innerHTML=totLab[linkId];
+                        filler_lab.style.backgroundColor="red";
+                    }
+                    else
+                    {
+                        sec_lab.style.display="none";
+                    }
+
+                    if(attTut[linkId]!=-1)
+                    {
+                        sec_tut.style.display="flex";
+                        course_tut.innerHTML=coursesTut[linkId]+" (Tut.)";
+                        teacher_tut.innerHTML=teachersTut[linkId];
+                        myatt_tut.innerHTML=attTut[linkId];
+                        totalatt_tut.innerHTML=totTut[linkId];
+                        filler_tut.style.backgroundColor="red";
+                    }
+                    else
+                    {
+                        sec_tut.style.display="none";
+                    }
+
+                    let my=attLec[linkId];
+                    let total=totLec[linkId];
+                    let myper=(my/total)*100;
+                    let wid=0;
+                    let id=setInterval(()=>{
+                        if(wid>=myper)
+                        {
+                            clearInterval(id);
+                        }
+                        wid++;
+                        filler.style.width=wid+"%";
+                        filler.innerHTML=""+(wid-1)+"%";
+                        if(wid>=90)
+                        {
+                            filler.style.backgroundColor="lime";
+                        }
+                        else if(wid>=75)
+                        {
+                            filler.style.backgroundColor="yellow";
+                        }
+                        
+                    },15);
+
+
+                    if(attLab[linkId]!=-1)
+                    {
+                        let my1=attLab[linkId];
+                        let total1=totLab[linkId];
+                        let myper1=(my1/total1)*100;
+                        let wid1=0;
+                        let id1=setInterval(()=>{
+                            if(wid1>=myper1)
+                            {
+                                clearInterval(id1);
+                            }
+                            wid1++;
+                            filler_lab.style.width=wid1+"%";
+                            filler_lab.innerHTML=""+(wid1-1)+"%";
+                            if(wid1>=90)
+                            {
+                                filler_lab.style.backgroundColor="lime";
+                            }
+                            else if(wid1>=75)
+                            {
+                                filler_lab.style.backgroundColor="yellow";
+                            }
+                            
+                        },15);
+                    }
+
+
+
+                    let my2=attTut[linkId];
+                    let total2=totTut[linkId];
+                    let myper2=(my2/total2)*100;
+                    let wid2=0;
+                    let id2=setInterval(()=>{
+                        if(wid2>=myper2)
+                        {
+                            clearInterval(id2);
+                        }
+                        wid2++;
+                        filler_tut.style.width=wid2+"%";
+                        filler_tut.innerHTML=""+(wid2-1)+"%";
+                        if(wid2>=90)
+                        {
+                            filler_tut.style.backgroundColor="lime";
+                        }
+                        else if(wid2>=75)
+                        {
+                            filler_tut.style.backgroundColor="yellow";
+                        }
+                        
+                    },15);
+                     
+                });
+            });
+
+
+            //////////////////////
+            /////////
+            /////////////////
+            /////////////////////
+            ////////////////////
+        </script>
+    </body>
+</html>

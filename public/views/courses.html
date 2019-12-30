@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+   <% if(data!=null && data.length>0) {%>
+     <table>
+     	<% data.forEach((elem,index) =>{
+     	%>
+     	<tr><td><%=elem.course_code %></td></tr>
+     <%})%>
+     </table>
+   <%}
+   else { %>
+   <p>No courses found</p>
+
+<%}%>
+</body>
+</html>

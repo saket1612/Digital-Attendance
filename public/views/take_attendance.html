@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                font-family: cursive;
+            }
+            body{
+                background:url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+                background-attachment: fixed;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .img-slider{
+                height:100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .bacha-card{
+                width:800px;
+                height:600px;
+                background:none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                color:orange;
+                font-size: 26px;
+                border:4px solid deeppink;
+                border-radius: 50%;
+            }
+            .bacha-img{
+                position: relative;
+                width:350px;
+                height:350px;
+                background:none;
+                background-attachment: fixed;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border:4px solid deeppink;
+                top:60px;
+                
+            }
+            .bacha-name{
+                position: relative;
+                top:10px;
+            }
+            .bacha-roll{
+                position: relative;
+                top:-20px;
+            }
+            .cross{
+                position: absolute;
+                color:red;
+                font-size: 72px;
+                left:220px;
+                cursor: pointer;
+            }
+            .tick{
+                position: absolute;
+                color:lime;
+                font-size: 72px;
+                right:220px;
+                cursor: pointer;
+            }
+            .cross:hover{
+                animation-name: tickle1;
+                animation-duration: 0.8s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+            }
+            .tick:hover{
+                animation-name: tickle2;
+                animation-duration: 0.8s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+            }
+            @keyframes tickle1{
+                0%{
+                    transform: translate(0px,0px);
+                    font-size: 72px;
+                }
+                
+                50%{
+                    transform: translate(-10px,-10px);
+                    font-size: 100px;
+                }
+                100%{
+                    transform: translate(0px,0px);
+                    font-size: 72px;
+                }
+            }
+            @keyframes tickle2{
+                0%{
+                    transform: translate(0px,0px);
+                    font-size: 72px;
+                }
+                
+                50%{
+                    transform: translate(10px,-10px);
+                    font-size: 100px;
+                }
+                100%{
+                    transform: translate(0px,0px);
+                    font-size: 72px;
+                }
+            }
+            .finish{
+                height: 100vh;
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
+            .finish-btn{
+                font-size: 60px;
+                cursor: pointer;
+                background: none;
+                border:4px solid darkgreen;
+                box-shadow: 3px 3px darkgreen;
+                border-radius: 15px;
+                transition: transform 0.3s ease-out;
+                color:red;
+                padding-left: 40px;
+                padding-right: 40px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+            .finish-btn:focus{
+                outline: none;
+            }
+            .finish-btn:hover{
+                box-shadow: none;
+                transform: translate(40px,10px);
+            }
+        </style>
+    </head>
+    <body>
+
+            <%var list_array =[]%>
+            <% data.forEach((elem,index) => { %>
+                <%list_array.push(elem)%>
+            <% }) %>
+            
+        <section class="img-slider">
+            <span class="cross"><i class="fas fa-times"></i></span>
+            <span class="tick"><i class="fas fa-check"></i></span>
+            <div class="bacha-card">
+                <div class="bacha-details bacha-img">
+                    
+                </div>
+                <div class="bacha-details bacha-name">
+                    
+                </div>
+                <div class="bacha-details bacha-roll">
+                    
+                </div>
+            </div>
+        </section>
+        <section class="finish">
+                <button type="submit" class="finish-btn" id="btn" onclick="f() ">FINISH</button>
+        </section>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            const carousel=document.querySelector(".img-slider");
+            const bachaCard=document.querySelector(".bacha-card");
+            const bachaImg=document.querySelector(".bacha-img");
+            const bachaName=document.querySelector(".bacha-name");
+            const bachaRoll=document.querySelector(".bacha-roll");
+            const cross=document.querySelector(".cross");
+            const tick=document.querySelector(".tick");
+            const finish=document.querySelector(".finish");
+
+
+            let imgs=[];
+            let names=[];
+            let rolls=[];
+
+            <% for(var i=0; i<list_array.length; i++) { %>
+                    names.push("<%= list_array[i].name %>");
+			<% } %>
+			
+            <% for(var i=0; i<list_array.length; i++) { %>
+                    rolls.push(<%= list_array[i].rollno %>);
+                    var path="/Images/"+"<%= list_array[i].rollno %>"+"_"+"<%=department%>"+"_"+"<%=section%>"+"_"+"<%=semester%>"+".jpeg";
+                    imgs.push(path);
+                    console.log(path);
+			<% } %>
+			
+            let att=[];
+            let curr=0;
+            let size=<%=list_array.length%>;
+            bachaImg.style.background=`url(${imgs[curr]})`;
+            bachaName.innerHTML=names[curr];
+            bachaRoll.innerHTML=rolls[curr];
+
+
+            cross.addEventListener('click',()=>{
+                let entry="";
+                entry+=rolls[curr]+":"+"0";
+                att.push(entry);
+                curr++;
+                if(curr==size)
+                {
+                    finish.style.display="flex";
+                    carousel.style.display="none";
+                    console.log(att);
+                }
+                else{
+                    bachaImg.style.background=`url(${imgs[curr]})`;
+                    bachaName.innerHTML=names[curr];
+                    bachaRoll.innerHTML=rolls[curr];
+                }
+            });
+
+            tick.addEventListener('click',()=>{
+                let entry="";
+                entry+=rolls[curr]+":"+"1";
+                att.push(entry);
+                curr++;
+                if(curr==size)
+                {
+                    finish.style.display="flex";
+                    carousel.style.display="none";
+                    console.log(att);
+                }
+                else{
+                    bachaImg.style.background=`url(${imgs[curr]})`;
+                    bachaName.innerHTML=names[curr];
+                    bachaRoll.innerHTML=rolls[curr];
+                }
+            });
+             function f(){
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:9000/update_attendance",
+                    data: JSON.stringify({data:att}),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+             };
+
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </body>
+</html>

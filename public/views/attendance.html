@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Attendance</title>
+        <style>
+            *{
+                font-family: cursive;
+            }
+            html{
+                margin: 0;
+                padding:0;
+            }
+            body{
+                min-height: 100vh;
+                background:url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+                margin: 0;
+                padding:0;
+            }
+            .sections{
+                height:100vh;
+                display:flex;
+                justify-content: center;
+                align-items: space-around;
+                flex-direction: column;
+                margin: 0;
+                padding:0;
+            }
+            .row{
+                width:100%;
+                height:25%;
+                margin: 0;
+                padding:0;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .sections-links{
+                cursor:pointer;
+                font-size:24px;
+                color:white;
+                padding:10px;
+                border:2px solid darkgreen;
+                border-radius: 5px;
+                box-shadow: 3px 3px darkgreen;
+                transition: transform 0.3s ease-out;
+            }
+            .sections-links:hover{
+                transform: translate(40px,10px);
+                box-shadow: none;
+                color: orange;
+            }
+            
+            .btns{
+                background:none;
+                cursor:pointer;
+                color:white;
+                border:none;
+            }
+            .btns:focus{
+                outline:none;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="sections">
+            <%var course_array =[]%>
+            <% all.forEach((elem,index) => { %>
+                <%course_array.push(elem)%>
+        <% }) %>
+            <div class="row row-1">
+                
+                <form method="post" action="/take_attendance">
+                <% if (course_array[0]!=undefined){
+                     var a=course_array[0].department;
+                     var b=course_array[0].section;
+                     var c=course_array[0].semester;
+                     var x=a+'_'+b+'_'+c;
+                     
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[0].department%> -<%=course_array[0].section%> (Sem - <%=course_array[0].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                <form method="post" action="/take_attendance">
+                 <% if (course_array[1]!=undefined){
+                     var a=course_array[1].department;
+                     var b=course_array[1].section;
+                     var c=course_array[1].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[1].department%> -<%=course_array[1].section%> (Sem - <%=course_array[1].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+            <form method="post" action="/take_attendance">
+                 <% if (course_array[2]!=undefined){
+                     var a=course_array[2].department;
+                     var b=course_array[2].section;
+                     var c=course_array[2].semester;
+                    var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[2].department%> -<%=course_array[2].section%> (Sem - <%=course_array[2].semester%>)</button>
+                    <%
+                 }%>
+                  </form>
+            </div>
+            <div class="row row-2">
+                <form method="post" action="/take_attendance">
+                <% if (course_array[3]!=undefined){
+                     var a=course_array[3].department;
+                     var b=course_array[3].section;
+                     var c=course_array[3].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[3].department%> -<%=course_array[3].section%> (Sem - <%=course_array[3].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                             <form method="post" action="/take_attendance">
+                 <% if (course_array[4]!=undefined){
+                     var a=course_array[4].department;
+                     var b=course_array[4].section;
+                     var c=course_array[4].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[4].department%> -<%=course_array[4].section%> (Sem - <%=course_array[4].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                             <form method="post" action="/take_attendance">
+                 <% if (course_array[5]!=undefined){
+                     var a=course_array[5].department;
+                     var b=course_array[5].section;
+                     var c=course_array[5].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[5].department%> -<%=course_array[5].section%> (Sem - <%=course_array[5].semester%>)</button>
+                    <%
+                 }%>
+                  </form>
+            </div>
+            <div class="row row-3">
+                <form method="post" action="/take_attendance">
+                <% if (course_array[6]!=undefined){
+                     var a=course_array[6].department;
+                     var b=course_array[6].section;
+                     var c=course_array[6].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[6].department%> -<%=course_array[6].section%> (Sem - <%=course_array[6].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                             <form method="post" action="/take_attendance">
+                 <% if (course_array[7]!=undefined){
+                     var a=course_array[7].department;
+                     var b=course_array[7].section;
+                     var c=course_array[7].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[7].department%> -<%=course_array[7].section%> (Sem - <%=course_array[7].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                             <form method="post" action="/take_attendance">
+                 <% if (course_array[8]!=undefined){
+                     var a=course_array[8].department;
+                     var b=course_array[8].section;
+                     var c=course_array[8].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[8].department%> -<%=course_array[8].section%> (Sem - <%=course_array[8].semester%>)</button>
+                    <%
+                 }%>
+                  </form>
+
+            </div>
+            <div class="row row-4">
+                <form method="post" action="/take_attendance">
+                <% if (course_array[9]!=undefined){
+                     var a=course_array[9].department;
+                     var b=course_array[9].section;
+                     var c=course_array[9].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[9].department%> -<%=course_array[9].section%> (Sem - <%=course_array[9].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                             <form method="post" action="/take_attendance">
+                 <% if (course_array[10]!=undefined){
+                     var a=course_array[10].department;
+                     var b=course_array[10].section;
+                     var c=course_array[10].semester;
+                     var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[10].department%> -<%=course_array[10].section%> (Sem - <%=course_array[10].semester%>)</button>
+                    <%
+                 }%>
+             </form>
+                             <form method="post" action="/take_attendance">
+                 <% if (course_array[11]!=undefined){
+                     var a=course_array[11].department;
+                     var b=course_array[11].section;
+                     var c=course_array[11].semester;
+                    var x=a+'_'+b+'_'+c;
+                    %>
+                    <button type="submit" class="sections-links btns" name="what" value="<%=x%>" ><%=course_array[11].department%> -<%=course_array[11].section%> (Sem - <%=course_array[11].semester%>)</button>
+                    <%
+                 }%>
+                  </form>
+
+            </div>
+            
+        </section>
+        
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            
+            
+        </script>
+    </body>
+</html>

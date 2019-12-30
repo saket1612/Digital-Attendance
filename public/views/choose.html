@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            *{
+                font-family: cursive;
+            }
+            html{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                min-height: 100vh;
+                margin: 0;
+                padding: 0;
+                background: url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+                background-attachment: fixed;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            nav{
+                background-color: red;
+                height:10vh;
+                position: relative;
+                display: block;
+            }
+            .hamburger{
+                position: absolute;
+                cursor: pointer;
+                top:50%;
+                left:1%;
+                transform: translate(-1%,-50%);
+                z-index: 20;
+            }
+            .home{
+                position: absolute;
+                cursor:pointer;
+                top:50%;
+                right:2%;
+                color:white;
+                transform: translate(-2%,-50%);
+                font-size: 35px;
+                z-index: 20;
+            }
+            .line{
+                width:30px;
+                height:3px;
+                background-color: white;
+                margin: 5px;
+                transition: all 0.5s ease;
+            }
+            .bar1-toggle{
+                transform: rotate(45deg) translate(11px,11px);
+            }
+            .bar2-toggle{
+                opacity:0.0;
+            }
+            .bar3-toggle{
+                transform: rotate(-45deg) ;
+            }
+            .menu-links{
+                list-style: none;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width:100%;
+                height: 90vh;
+                margin: 0;
+                padding: 0;
+                top:100px;
+                position: fixed;
+                font-size: 50px;
+                background:url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+                color:white;
+            }
+            .menu-links li{
+                position: relative;
+                cursor: pointer;
+                transition: all 1s ease ;
+                padding-left: 20px;
+                margin: 0;
+                padding: 0;
+                display:block;
+            }
+            .menu-links li:hover{
+                animation-name: linkeffect;
+                animation-duration: 0.7s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                color:orange;
+                font-size:70px;
+            }
+            @keyframes linkeffect{
+                0%{
+                    transform: rotateZ(0deg);
+                }
+                25%{
+                    transform: rotateZ(15deg);
+                }
+                50%{
+                    transform: rotateZ(0deg);
+                }
+                75%{
+                    transform: rotateZ(-15deg);
+                }
+                100%{
+                    transform: rotateZ(0deg);
+                }
+            }
+            .nav-links{
+                width:20%;
+                list-style: none;
+                display:flex;
+                flex-direction: column;
+                height: 100%;
+                align-items:center;
+                justify-content: space-between;
+                margin: 0;
+                padding: 0;
+                position: fixed;
+                background-color:blue;
+                transition: all 0.8s linear;
+                clip-path: circle(10px at -100% 50%);
+                -webkit-clip-path:circle(10px at -100% 50%);
+                z-index: 1;
+            }
+            .nav-links.open{
+                clip-path: circle(800px at -100% 50%);
+                -webkit-clip-path:circle(800px at -10% 50%);
+                box-shadow: 5px 5px lightgrey;
+            }
+            .nav-links li{
+                padding: 0;
+                margin: 0;
+                transition: all 0.3s ease;
+            }
+            .nav-links li:hover{
+                transform: translate(10px,10px);
+            }
+            .submit-btn{
+                position: relative;
+                text-decoration:none;
+                color: white;
+                padding: 0;
+                margin: 0;
+                font-weight: bold;
+                font-size: 28px;
+                color:white;
+            }
+            .links-div{
+                margin-top: 60px;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 60%;
+                align-items: center;
+                justify-content: space-around;
+            }
+            .submit-btn:hover{
+                color:orange;
+            }
+            .btn-div{
+                width:100%;
+                height:40%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .signout{
+                width:40%;
+                height:40px;
+                position: relative;
+                top:20px;
+                cursor:pointer;
+                color: red;
+                font-weight: bold;
+                border-radius: 5%;
+                border:3px solid red;
+                font-size: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 3px 3px black;
+                background-color: lime;
+            }
+            .signout:hover{
+                transform: translate(10px,10px);
+                box-shadow: none;
+
+            }
+            .signout:focus{
+                outline: none;
+            }
+            .cool-links::after{
+                content:'';
+                display: block;
+                width:0;
+                height:2px;
+                background-color:white;
+                transition: width .3s;
+            }
+            .cool-links:hover::after{
+                width:100%;
+                transition: width .3s;
+            }
+            .submit-btn{
+                background: none;
+                border:none;
+                cursor: pointer;
+                font-size: 22px;
+            }
+            .submit-btn:focus{
+               outline: none;
+            }
+            .lec{
+                list-style: none;
+                margin:0;
+                padding:0;
+                position: fixed;
+                background-color: red;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width:36%;
+                transition: clip-path 0.3s ease-out 0.3s,opacity 0.3s ease-in 0.3s;
+                opacity:1;
+                clip-path:circle(0px at 50% 51%);
+                -webkit-clip-path:circle(0px at 50% 51%);
+            }
+            .lab{
+                list-style: none;
+                margin:0;
+                padding:0;
+                position: fixed;
+                background-color: red;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width:100%;
+                transition: clip-path 0.3s ease-out 0.3s,opacity 0.3s ease-in;
+                opacity:1;
+                clip-path:circle(0px at 50% 51%);
+                -webkit-clip-path:circle(0px at 50% 51%);
+            }
+            .tut{
+                list-style: none;
+                margin:0;
+                padding:0;
+                position: fixed;
+                background-color: red;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100%;
+                width:165%;
+                transition: clip-path 0.3s ease-out 0.3s,opacity 0.3s ease-in;
+                opacity:1;
+                clip-path:circle(0px at 50% 51%);
+                -webkit-clip-path:circle(0px at 50% 51%);
+            }
+            .open{
+                display:flex;
+                clip-path:circle(250px at 50% 51%);
+                -webkit-clip-path:circle(250px at 50% 51%);
+            }
+            .fade{
+                opacity:0;
+                font-size:0px;
+            }
+            .syll li{
+                color:white;
+                font-size: 24px;
+                margin-top: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor:pointer;
+            }
+            .syll li:nth-child(1)
+            {
+                transition: all 1s ease-out 0.1s;
+            }
+            .syll li:nth-child(2)
+            {
+                transition: all 1s ease-out 0.2s;
+            }
+            .syll li:nth-child(3)
+            {
+                transition: all 1s ease-out 0.3s;
+            }
+            .syll li:nth-child(4)
+            {
+                transition: all 1s ease-out 0.4s;
+            }
+            .syll li:nth-child(5)
+            {
+                transition: all 1s ease-out 0.5s;
+            }
+            .syll li:nth-child(6)
+            {
+                transition: all 1s ease-out 0.6s;
+            }
+            .btn-style{
+                cursor: pointer;
+                background: none;
+                color:white;
+                border: none;
+            }
+            .btn-style:focus{
+                outline: none;
+            }
+            .btn-style:hover{
+                color:lime;
+                animation-name: myanimo;
+                animation-timing-function: ease-out;
+                animation-iteration-count: infinite;
+                animation-duration: 1s;
+            }
+            @keyframes myanimo{
+                0%{
+                    font-size: 24px;
+                }
+                50%{
+                    font-size: 30px;
+                }
+                100%{
+                    font-size: 24px;
+                }
+            }
+           .welcome,.track{
+                display:block;
+                position: absolute;
+                color:lime;
+                text-align: center;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: backwards;
+                animation-direction: alternate;
+                z-index: 2;
+                font-size: 70px;
+                display: none;
+                margin-left: -130px;
+            }
+            .welcome{
+                top:200px;
+                left:500px;
+            }
+            .track{
+                top:500px;
+                left:575px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="hamburger">
+                <div class="line bar1"></div>
+                <div class="line bar2"></div>
+                <div class="line bar3"></div>
+            </div>
+            <ul class="nav-links">
+                <form class="links-div" action="/add" method="post">
+                    <li>
+                        <button type="submit" class="submit-btn cool-links" name="which" value="1">Add Lecture</button>
+                    </li>
+                    <li>
+                        <button type="submit" class="submit-btn cool-links" name="which" value="2">Add Lab</button>
+                    </li>
+                    <li>
+                        <button type="submit" class="submit-btn cool-links" name="which" value="3">Add Tutorial</button>
+                    </li>
+                </form>
+                <form class="links-div" action="/remove" method="post">
+                    <li>
+                        <button type="submit" class="submit-btn cool-links" name="which" value="1">Remove Lecture</button>
+                    </li>
+                    <li>
+                        <button type="submit" class="submit-btn cool-links" name="which" value="2">Remove Lab</button>
+                    </li>
+                    <li>
+                        <button type="submit" class="submit-btn cool-links" name="which" value="3">Remove Tutorial</button>
+                    </li>
+                </form>
+                <form class="btn-div" action="logout">
+                    <button class="signout" type="submit">Logout</button>
+                </form>
+            </ul>
+            <div class="home">
+                <i class="fas fa-home"></i>
+            </div>
+            <ul class="menu-links">
+                <li class="lec-link"><span>Lectures</span></li>
+                <li class="lab-link"><span>Labs</span></li>
+                <li class="tut-link"><span>Tutorials</span></li>
+            </ul>
+            <form action="/attendance" method="post">
+                <ul class="syll lec">
+                <% if(classes!=null && classes.length>0) {%>
+                        <% classes.forEach((elem,index) =>{
+                        %>
+                            <li><button class="btn-style" type="submit" name="which1" value="<%=elem.course_name%>"><%=elem.course_name%></button></li>
+                        <%})%>
+                   <%}
+                   else { %>
+                    <li><p class="btn-style">No courses found</p></li>
+
+                <%}%>
+                </ul>
+            </form>
+               
+            <form action="/attendance" method="post">
+                <ul class="syll lab">
+                <% if(lab!=null && lab.length>0) {%>
+                        <% lab.forEach((elem,index) =>{
+                        %>
+                            <li><button class="btn-style" type="submit" name="which2" value="<%=elem.course_name%>"><%=elem.course_name%></button></li>
+                        <%})%>
+                   <%}
+                   else { %>
+                    <li><p class="btn-style">No courses found</p></li>
+
+                <%}%>
+                </ul>
+            </form>
+
+            <form action="/attendance" method="post">
+                <ul class="syll tut">
+                <% if(tut!=null && tut.length>0) {%>
+                        <% tut.forEach((elem,index) =>{
+                        %>
+                            <li><button class="btn-style" type="submit" name="which3" value="<%=elem.course_name%>"><%=elem.course_name%></button></li>
+                        <%})%>
+                   <%}
+                   else { %>
+                   <li><p class="btn-style">No courses found</p></li>
+
+                <%}%>
+                </ul>
+            </form>
+        </nav>
+         
+        <span class="welcome">Welcome To Teacher Portal</span>
+        <span class="track">Add Your Classes Here</span>
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script  type="text/javascript">
+            const bar1=document.querySelector(".bar1");
+            const bar2=document.querySelector(".bar2");
+            const bar3=document.querySelector(".bar3");
+            const navlinks=document.querySelector(".nav-links");
+            const hamburger=document.querySelector(".hamburger");
+            const lec=document.querySelector(".lec");
+            const lab=document.querySelector(".lab");
+            const tut=document.querySelector(".tut");
+            const lecLink=document.querySelector(".lec-link");
+            const labLink=document.querySelector(".lab-link");
+            const tutLink=document.querySelector(".tut-link");
+            const lecSub=document.querySelectorAll(".lec li");
+            const labSub=document.querySelectorAll(".lab li");
+            const tutSub=document.querySelectorAll(".tut li");
+            const win=document.querySelector(".menu-links");
+            const home=document.querySelector(".home i");
+            const welcome=document.querySelector(".welcome");
+            const track=document.querySelector(".track");
+           
+            //////////////
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+            //////////////
+
+
+            //////////////
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+            //////////////
+            lecLink.addEventListener('click',()=>{
+                lec.classList.toggle("open");
+                lecLink.classList.toggle("fade");
+                lecTime=setTimeout(()=>{
+                    lec.classList.toggle("open");
+                    lecLink.classList.toggle("fade");
+                },2500);
+            });
+
+
+            labLink.addEventListener('click',()=>{
+                lab.classList.toggle("open");
+                labLink.classList.toggle("fade");
+                labTime=setTimeout(()=>{
+                    lab.classList.toggle("open");
+                    labLink.classList.toggle("fade");
+                },2500);
+            });
+
+            tutLink.addEventListener('click',()=>{
+                tut.classList.toggle("open");
+                tutLink.classList.toggle("fade");
+                tutTime=setTimeout(()=>{
+                    tut.classList.toggle("open");
+                    tutLink.classList.toggle("fade");
+                },2500);
+            });
+
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+
+           
+
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+            hamburger.addEventListener('click',()=>{
+                bar1.classList.toggle("bar1-toggle");
+                bar2.classList.toggle("bar2-toggle");
+                bar3.classList.toggle("bar3-toggle");
+                navlinks.classList.toggle("open");
+                if(navlinks.classList.contains("open"))
+                {
+                    setTimeout(()=>{
+                        win.style.display="none";
+                        welcome.style.display="block";
+                        track.style.display="block";
+                    },200);
+                }
+                else{
+                   
+                    setTimeout(()=>{
+                        win.style.display="flex";
+                         welcome.style.display="none";
+                        track.style.display="none";
+                    },200);
+                }
+            });
+
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+
+           home.addEventListener('click',()=>{
+                setTimeout(()=>{
+                    win.style.display="flex";
+                    welcome.style.display="none";
+                    track.style.display="none";
+                },200);
+                if(navlinks.classList.contains("open"))
+                {
+                    bar1.classList.toggle("bar1-toggle");
+                    bar2.classList.toggle("bar2-toggle");
+                    bar3.classList.toggle("bar3-toggle");
+                    navlinks.classList.toggle("open");
+                   
+                }
+            });
+
+
+            //////////////
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+            //////////////
+
+           
+
+
+            //////////////
+            /////////
+            ///////////
+            //////////////////
+            ////////////////////
+            //////////////////
+            //////////////
+           
+
+        </script>
+    </body>
+</html>
